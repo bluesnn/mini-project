@@ -6,27 +6,36 @@
     </view>
     <button @click="goAbout">about</button>
     <button @click="goTest">test</button>
+    <button @click="getTodo">todo</button>
   </view>
 </template>
 
 <script setup>
-import { onShow } from '@dcloudio/uni-app'
+import { onShow } from "@dcloudio/uni-app";
+import { todo } from "./api";
 
 const goAbout = () => {
   uni.navigateTo({
-    url: '/pages/about/index?id=1&name=uniapp'
-  })
-}
+    url: "/pages/about/index?id=1&name=uniapp",
+  });
+};
 
 onShow(() => {
-  console.log('App Show')
-})
+  console.log("App Show");
+
+});
+
+const getTodo = () => {
+  todo().then((res) => {
+    console.log(res);
+  });
+}
 
 const goTest = () => {
   uni.navigateTo({
-    url: '/pages/mac/index'
-  })
-}
+    url: "/pages/mac/index",
+  });
+};
 </script>
 
 <style scoped>
